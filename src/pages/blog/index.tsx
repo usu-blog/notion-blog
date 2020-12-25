@@ -43,11 +43,11 @@ export async function getStaticProps({ preview }) {
       preview: preview || false,
       posts,
     },
-    unstable_revalidate: 10,
+    revalidate: 10,
   }
 }
 
-export default ({ posts = [], preview }) => {
+const BlogIndex = ({ posts = [], preview }) => {
   return (
     <>
       <Header titlePre="Blog" />
@@ -76,7 +76,7 @@ export default ({ posts = [], preview }) => {
                     {!post.Published && (
                       <span className={blogStyles.draftBadge}>Draft</span>
                     )}
-                    <a>{post.Page}</a>
+                    <a className="text-red-700">{post.Page}</a>
                   </div>
                 </Link>
               </h3>
@@ -100,3 +100,5 @@ export default ({ posts = [], preview }) => {
     </>
   )
 }
+
+export default BlogIndex
