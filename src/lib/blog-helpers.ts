@@ -28,3 +28,19 @@ export const normalizeSlug = slug => {
   }
   return startingSlash || endingSlash ? normalizeSlug(slug) : slug
 }
+
+export const parseImageUrl = (id, url, width) => {
+  let rUrl
+  if (url.startsWith('https://s3')) {
+    let [parsedOriginUrl] = url.split('?')
+    rUrl = `https://www.notion.so/image/${encodeURIComponent(
+      parsedOriginUrl
+    ).replace('s3.us-west', 's3-us-west')}`
+  } else if (url.startsWith('/image')) {
+    rUrl = `https://www.notion.so/${url}?table=block&id=${id}&width=600&userId=&cache=v2`
+  } else {
+    rUrl = url
+  }
+
+  return `${rUrl}?table=block&id=${id}&width=600&userId=e376f42f-bfed-40ea-8fe1-4010b6898048&cache=v2`
+}

@@ -12,7 +12,7 @@ import React, { CSSProperties, useEffect } from 'react'
 import getBlogIndex from '../../lib/notion/getBlogIndex'
 import getNotionUsers from '../../lib/notion/getNotionUsers'
 import { getBlogLink, getDateStr } from '../../lib/blog-helpers'
-import { Z_BLOCK } from 'zlib'
+import { parseImageUrl } from '~/lib/blog-helpers'
 
 // Get the data for each blog post
 export async function getStaticProps({ params: { slug }, preview }) {
@@ -97,35 +97,6 @@ const RenderPost = ({ post, redirect, preview }) => {
       children: React.ReactFragment
     }
   } = {}
-
-  const parseImageUrl = (id, url, width) => {
-    let rUrl
-    if (url.startsWith('https://s3')) {
-      let [parsedOriginUrl] = url.split('?')
-      rUrl = `https://www.notion.so/image/${encodeURIComponent(
-        parsedOriginUrl
-      ).replace('s3.us-west', 's3-us-west')}`
-    } else if (url.startsWith('/image')) {
-      rUrl = `https://www.notion.so/${url}?table=block&id=${id}&width=600&userId=&cache=v2`
-    } else {
-      rUrl = url
-    }
-
-    // https://www.notion.so/https://s3-us-west-2.amazonaws.com/secure.notion-static.com/81943694-fc1a-478b-a319-62be1cbb8f75/3d1c68b7085f00a91894ee6fa81f3e66.jpg?table=block&id=cf504810-7830-4c21-bee6-32ef49b2bab6&width=600&userId=&cache=v2
-    // https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F81943694-fc1a-478b-a319-62be1cbb8f75%2F3d1c68b7085f00a91894ee6fa81f3e66.jpg?table=block&id=cf504810-7830-4c21-bee6-32ef49b2bab6&width=600&userId=&cache=v2
-    // https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F81943694-fc1a-478b-a319-62be1cbb8f75%2F3d1c68b7085f00a91894ee6fa81f3e66.jpg?table=block&id=cf504810-7830-4c21-bee6-32ef49b2bab6&width=600&userId=e376f42f-bfed-40ea-8fe1-4010b6898048&cache=v2
-    // https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F81943694-fc1a-478b-a319-62be1cbb8f75%2F3d1c68b7085f00a91894ee6fa81f3e66.jpg?table=block&id=cf504810-7830-4c21-bee6-32ef49b2bab6&width=600&userId=e376f42f-bfed-40ea-8fe1-4010b6898048&cache=v2
-    // https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F81943694-fc1a-478b-a319-62be1cbb8f75%2F3d1c68b7085f00a91894ee6fa81f3e66.jpg?table=block&id=cf504810-7830-4c21-bee6-32ef49b2bab6&width=600&userId=e376f42f-bfed-40ea-8fe1-4010b6898048&cache=v2
-
-    // https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F57b04a95-e377-4fe6-b4e8-f6f4520e1ef0%2Fxps-g2E2NQ5SWSU-unsplash.jpg?table=block&id=cf504810-7830-4c21-bee6-32ef49b2bab6&width=600&userId=e376f42f-bfed-40ea-8fe1-4010b6898048&cache=v2
-    // https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F57b04a95-e377-4fe6-b4e8-f6f4520e1ef0%2Fxps-g2E2NQ5SWSU-unsplash.jpg?table=block&id=2fad7db6-47e1-4f6b-83e0-50ad02d98e80&width=600&userId=e376f42f-bfed-40ea-8fe1-4010b6898048&cache=v2
-    // if (width) {
-    //   return `${rUrl}?width=${width}`
-    // } else {
-    //   return rUrl
-    // }
-    return `${rUrl}?table=block&id=${id}&width=600&userId=e376f42f-bfed-40ea-8fe1-4010b6898048&cache=v2`
-  }
 
   useEffect(() => {
     const twitterSrc = 'https://platform.twitter.com/widgets.js'
