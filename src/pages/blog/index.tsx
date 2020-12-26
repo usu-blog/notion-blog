@@ -76,7 +76,7 @@ const BlogIndex = ({ posts = [], preview }) => {
                     {!post.Published && (
                       <span className={blogStyles.draftBadge}>Draft</span>
                     )}
-                    <a className="text-red-700">{post.Page}</a>
+                    <a className="">{post.Page}</a>
                   </div>
                 </Link>
               </h3>

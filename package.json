@@ -5,7 +5,9 @@
     "dev": "next dev",
     "start": "next start",
     "build": "next build && node .next/serverless/scripts/build-rss.js",
-    "format": "prettier --write \"**/*.{js,jsx,json,ts,tsx,md,mdx,css,html,yml,yaml,scss,sass}\" --ignore-path .gitignore"
+    "format": "prettier --write \"**/*.{js,jsx,json,ts,tsx,md,mdx,css,html,yml,yaml,scss,sass}\" --ignore-path .gitignore",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "husky": {
     "hooks": {
@@ -24,15 +26,22 @@
     "uuid": "^8.1.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@storybook/addon-actions": "^6.1.11",
+    "@storybook/addon-essentials": "^6.1.11",
+    "@storybook/addon-links": "^6.1.11",
+    "@storybook/react": "^6.1.11",
+    "@tailwindcss/postcss7-compat": "^2.0.2",
     "@types/katex": "^0.11.0",
     "@types/node": "^13.1.2",
     "@types/react": "^16.9.17",
-    "autoprefixer": "^10.1.0",
+    "autoprefixer": "^9",
+    "babel-loader": "^8.2.2",
     "husky": "^3.1.0",
     "lint-staged": "^9.5.0",
-    "postcss": "^8.2.1",
+    "postcss": "^7",
     "prettier": "^1.19.1",
-    "tailwindcss": "^2.0.2",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "typescript": "^3.7.4"
   }
 }
