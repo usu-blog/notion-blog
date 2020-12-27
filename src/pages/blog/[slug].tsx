@@ -153,20 +153,24 @@ const RenderPost = ({ post, redirect, preview }) => {
       )}
       <div className={blogStyles.post}>
         <h1>{post.Page || ''}</h1>
-        {post.Authors.length > 0 && (
-          <div className="authors">By: {post.Authors.join(' ')}</div>
-        )}
-        {post.Date && (
-          <div className="posted">Posted: {getDateStr(post.Date)}</div>
-        )}
         {post.FeatureImage && (
           <img
             src={parseImageUrl(post.id, post.FeatureImage, 100)}
             alt="feature image"
           />
         )}
+        {post.Authors.length > 0 && (
+          <div className="authors text-xs text-gray-600">
+            By: {post.Authors.join(' ')}
+          </div>
+        )}
+        {post.Date && (
+          <div className="posted text-xs text-gray-600">
+            Posted: {getDateStr(post.Date)}
+          </div>
+        )}
 
-        <hr />
+        <hr className="my-2" />
 
         {(!post.content || post.content.length === 0) && (
           <p>This post has no content</p>

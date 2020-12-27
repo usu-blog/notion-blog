@@ -69,16 +69,31 @@ const BlogIndex = ({ posts = [], preview }) => {
         )}
         {posts.map(post => {
           return (
-            <div className="flex">
+            <div
+              className="flex flex-col md:flex-row bg-no-repeat"
+              key={post.Slug}
+            >
               {post.FeatureImage && (
-                <img
-                  src={parseImageUrl(post.id, post.FeatureImage, 100)}
-                  alt="feature image"
-                  className=" h-48"
-                />
+                <Link href="/blog/[slug]" as={getBlogLink(post.Slug)}>
+                  <div className=" w-full md:w-72 flex mx-auto cursor-pointer">
+                    <div
+                      className="w-full bg-center"
+                      style={{
+                        backgroundImage: `url(${parseImageUrl(
+                          post.id,
+                          post.FeatureImage,
+                          100
+                        )})`,
+                        paddingTop: '56.25%',
+                      }}
+                    >
+                      {/* <img alt="feature image" className=" h-48" /> */}
+                    </div>
+                  </div>
+                </Link>
               )}
-              <div className={blogStyles.postPreview} key={post.Slug}>
-                <h3>
+              <div className=" flex-1 p-4">
+                <h3 className=" cursor-pointer">
                   <Link href="/blog/[slug]" as={getBlogLink(post.Slug)}>
                     <div className={blogStyles.titleContainer}>
                       {!post.Published && (
@@ -89,16 +104,16 @@ const BlogIndex = ({ posts = [], preview }) => {
                   </Link>
                 </h3>
                 {post.Authors.length > 0 && (
-                  <div className="authors text-sm">
+                  <div className="authors text-xs text-gray-600">
                     By: {post.Authors.join(' ')}
                   </div>
                 )}
                 {post.Date && (
-                  <div className="posted text-sm">
+                  <div className="posted text-xs text-gray-600">
                     Posted: {getDateStr(post.Date)}
                   </div>
                 )}
-                <p className=" text-xs">
+                <p className=" mt-2 text-xs">
                   {(!post.preview || post.preview.length === 0) &&
                     'No preview available'}
                   {(post.preview || []).map((block, idx) =>

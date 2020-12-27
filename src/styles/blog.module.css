@@ -64,7 +64,6 @@
 
 .postPreview {
   max-width: 600px;
-  margin: 10px auto;
   border-bottom: 1px solid rgba(0, 0, 0, 0.8);
 }
 
@@ -89,7 +88,7 @@
 .post :global(video),
 .post :global(img),
 .post :global(.asset-wrapper) {
-  /* margin: 2rem auto; */
+  margin: 1rem auto;
   box-shadow: 0 8px 8px rgba(0, 0, 0, 0.3);
   max-width: 100%;
   display: block;
@@ -127,10 +126,6 @@
   max-width: calc(600px + 10%);
   margin: 0 auto;
   padding: 5%;
-}
-
-.post :global(hr) {
-  margin-bottom: 2em;
 }
 
 .post :global(a + p) {

@@ -39,6 +39,7 @@
     "babel-loader": "^8.2.2",
     "husky": "^3.1.0",
     "lint-staged": "^9.5.0",
+    "moment": "^2.29.1",
     "postcss": "^7",
     "prettier": "^1.19.1",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat",
