@@ -9,7 +9,7 @@ const Index = () => (
     <div className=" container md:max-w-screen-md mx-auto px-2">
       <h1 className=" text-center">UsuCode</h1>
       <div>
-        <p>休日フリーランスを行っているフロントエンジニアのアキヤマです。</p>
+        <p>週末フリーランスを行っているフロントエンジニアのアキヤマです。</p>
         <p>
           最近HHKBポチり、2021年はもっと副業にも力を入れていこうと考えております。
         </p>
