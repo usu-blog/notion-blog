@@ -1,10 +1,16 @@
+const colors = require('tailwindcss/colors')
 module.exports = {
-  purge: ['./src/pages/**/*.{tsx,ts}'],
+  purge: ['./src/**/*.{tsx,ts}'],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: colors.teal,
+      },
+    },
   },
   variants: {
+    margin: ['responsive', 'hover', 'first'],
     extend: {},
   },
   plugins: [],

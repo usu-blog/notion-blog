@@ -69,15 +69,12 @@ const BlogIndex = ({ posts = [], preview }) => {
         )}
         {posts.map(post => {
           return (
-            <div
-              className="flex flex-col md:flex-row bg-no-repeat"
-              key={post.Slug}
-            >
+            <div className="flex flex-col md:flex-row my-2" key={post.Slug}>
               {post.FeatureImage && (
                 <Link href="/blog/[slug]" as={getBlogLink(post.Slug)}>
                   <div className=" w-full md:w-72 flex mx-auto cursor-pointer">
                     <div
-                      className="w-full bg-center"
+                      className="w-full bg-center bg-no-repeat"
                       style={{
                         backgroundImage: `url(${parseImageUrl(
                           post.id,
