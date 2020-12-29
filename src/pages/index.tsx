@@ -8,7 +8,7 @@ const Index = () => (
     <Header titlePre="Home" />
     <div className=" container mx-auto">
       <h1 className=" text-center text-5xl">Usu Code</h1>
-      <div className="text-xl text-center">
+      <div className="mt-4 px-2 sm:px-0 sm:text-xl text-center">
         <p>
           現役フロントエンジニアで週末フリーランスとして活動しているアキヤマです。
         </p>
