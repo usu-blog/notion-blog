@@ -63,7 +63,7 @@ const BlogIndex = ({ posts = [], preview }) => {
         </div>
       )}
       <div className={`${sharedStyles.layout} ${blogStyles.blogIndex}`}>
-        <h1>UsuCode</h1>
+        <h1>Usu Code</h1>
         {posts.length === 0 && (
           <p className={blogStyles.noPosts}>There are no posts yet</p>
         )}
@@ -101,16 +101,16 @@ const BlogIndex = ({ posts = [], preview }) => {
                   </Link>
                 </h3>
                 {post.Authors.length > 0 && (
-                  <div className="authors text-xs text-gray-600">
+                  <div className="authors text-sm text-gray-600">
                     By: {post.Authors.join(' ')}
                   </div>
                 )}
                 {post.Date && (
-                  <div className="posted text-xs text-gray-600">
+                  <div className="posted text-sm text-gray-600">
                     Posted: {getDateStr(post.Date)}
                   </div>
                 )}
-                <p className=" mt-2 text-xs">
+                <p className=" mt-2 text-sm">
                   {(!post.preview || post.preview.length === 0) &&
                     'No preview available'}
                   {(post.preview || []).map((block, idx) =>

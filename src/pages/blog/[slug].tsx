@@ -160,12 +160,12 @@ const RenderPost = ({ post, redirect, preview }) => {
           />
         )}
         {post.Authors.length > 0 && (
-          <div className="authors text-xs text-gray-600">
+          <div className="authors text-sm text-gray-600">
             By: {post.Authors.join(' ')}
           </div>
         )}
         {post.Date && (
-          <div className="posted text-xs text-gray-600">
+          <div className="posted text-sm text-gray-600">
             Posted: {getDateStr(post.Date)}
           </div>
         )}
